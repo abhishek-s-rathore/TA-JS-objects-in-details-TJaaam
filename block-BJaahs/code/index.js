@@ -35,16 +35,16 @@ question.getCorrectAnswer();
 // by creationg object and using function
 function createQuestions(title, options, correctAnswerIndex) {
   let question = {};
-  (question.title = title),
-    (question.options = options),
-    (question.correctAnswerIndex = correctAnswerIndex);
-  question.isAnswerCorrect = function (choice) {
+    question.title = title,
+    question.options = options,
+    question.correctAnswerIndex = correctAnswerIndex;
+    question.isAnswerCorrect = function (choice) {
     return choice === question.correctAnswerIndex;
   };
-  question.getCorrectAnswer = function () {
+    question.getCorrectAnswer = function () {
     return question.options[correctAnswerIndex];
   };
-  return question;
+    return question;
 }
 //test
 const question1 = createQuestions(
@@ -63,9 +63,9 @@ const question1 = createQuestions(
 //  Using this keyword
 function createQuestions(title, options, correctAnswerIndex) {
   let question = {};
-  (question.title = title),
-    (question.options = options),
-    (question.correctAnswerIndex = correctAnswerIndex);
+  question.title = title,
+  question.options = options,
+  question.correctAnswerIndex = correctAnswerIndex;
   question.isAnswerCorrect = function (choice) {
     return choice === this.correctAnswerIndex;
   };
