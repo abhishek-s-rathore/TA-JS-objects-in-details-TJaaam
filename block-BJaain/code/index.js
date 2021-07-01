@@ -1,15 +1,15 @@
-console.log(this.document === document); // Output
+console.log(this.document === document); // true
 
 // ------------
 
-console.log(this === window); //Output
+console.log(this === window); //true
 
 // ------------
 
 var myFunction = function () {
   console.log(this);
 };
-myFunction(); // Output
+myFunction(); // Window
 
 // ------------
 
@@ -17,7 +17,7 @@ function f1() {
   'use strict';
   return this;
 }
-console.log(f1() === window); //Output
+console.log(f1() === window); // false
 
 // ------------
 
@@ -26,7 +26,8 @@ function foo() {
   console.log(this === window);
 }
 
-foo(); //Output ??
+foo(); //'Simple function call'
+        // true 
 
 // ------------
 
@@ -34,7 +35,8 @@ foo(); //Output ??
 (function () {
   console.log('Anonymous function invocation');
   console.log(this === window);
-})(); //Output
+})(); // Anonymous function invocation
+      // true
 
 // ------------
 
@@ -42,7 +44,7 @@ var myObject = {};
 myObject.someMethod = function () {
   console.log(this);
 };
-myObject.someMethod(); //Value Of This
+myObject.someMethod(); // myObject
 
 // ------------
 
@@ -56,9 +58,10 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // John Reed
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // Paul Adams
+
 
 // ------------
 
@@ -76,10 +79,11 @@ let user = {
   },
 };
 
-user.foo(); // Output
+user.foo(); // Simple function call, False
 let fun1 = user.foo1;
-fun1(); // Output ??
-user.foo1(); // Output ??
+fun1(); // true
+user.foo1(); //false
+
 
 // ------------
 
