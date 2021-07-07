@@ -27,6 +27,7 @@ Getter
 
 - `length`: returns the current length of the stack.
 
+
 #### Test
 
 ```js
