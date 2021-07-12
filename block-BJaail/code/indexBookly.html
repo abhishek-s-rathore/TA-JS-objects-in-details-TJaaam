@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Title-->
+    <title>Bookly App</title>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!--Stylesheet-->
+    <style>
+      h1 {
+        text-align: center;
+        margin: 2rem auto;
+        font-size: 3.5rem;
+        font-weight: 400;
+      }
+      h1 span {
+        color: rgb(26, 135, 179);
+      }
+
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 2rem;
+        margin: 0 auto;
+      }
+      form {
+        padding: 2rem;
+      }
+
+      form input {
+        width: 100%;
+        height: 2rem;
+        margin: 1.5rem auto;
+        margin-top: 0.5rem;
+      }
+
+      form button {
+        width: 100%;
+        height: 2.5rem;
+        margin: 1.5rem auto;
+        margin-top: 0.5rem;
+        background-color: rgb(26, 135, 179);
+        color: white;
+        border: 1px solid black;
+        margin-left: 0.25rem;
+      }
+
+      .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      ul {
+        padding-left: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        border-top: 1px solid rgb(114, 113, 113);
+        background-color: rgb(210, 210, 210);
+        padding-right: 1rem;
+        padding-left: 0.5rem;
+      }
+    </style>
+
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/5cc6fb9f6b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <h1>
+        <span><i class="fas fa-book-open"></i> </span>My<span>Book</span>List
+      </h1>
+    </header>
+    <!--Main-->
+    <main>
+      <div class="container">
+        <form class="form">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" />
+          <label for="author">Author</label>
+          <input type="text" name="author" id="author" />
+          <label for="isbn">ISBN#</label>
+          <input type="number" name="isbn" id="isbn" />
+          <button>Add Book</button>
+        </form>
+
+        <div
+          style="
+            border-top: 1px solid rgb(114, 113, 113);
+            padding-left: 0.25rem;
+            margin-bottom: -1rem;
+          "
+          class="flex"
+        >
+          <h4>Title</h4>
+          <h4>Author</h4>
+          <h4>ISBN#</h4>
+          <h4></h4>
+        </div>
+        <ul id="root"></ul>
+      </div>
+    </main>
+    <!--Footer-->
+    <footer></footer>
+    <script src="/code//bookly.js"></script>
+  </body>
+</html>
