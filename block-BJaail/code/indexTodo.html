@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Title-->
+    <title>Todo List | Classes</title>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--CSS-->
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: rgb(199, 4, 43);
+      }
+      .container {
+        max-width: 600px;
+        width: 100%;
+        margin: 2rem auto;
+        border: 2px solid white;
+        padding: 1rem;
+        padding-bottom: 0.2rem;
+        border-radius: 0.35rem;
+        text-align: center;
+      }
+      .todos {
+        padding-left: 0;
+      }
+      input {
+        width: 100%;
+        height: 3rem;
+        padding-left: 1rem;
+        font-size: 1.5rem;
+        border: 2px solid gray;
+        border-radius: 0.25rem;
+        outline-color: green;
+      }
+      input::placeholder {
+        color: rgb(93, 84, 84);
+      }
+      li {
+        border: 2px solid gray;
+        width: 100%;
+        background-color: rgb(193, 151, 218);
+        margin: 1rem auto;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0.25rem;
+        padding: 0.5rem 1rem;
+      }
+      .innerDiv {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 1.5rem;
+      }
+      ul {
+        padding-left: 0;
+      }
+      li input {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-right: 1rem;
+      }
+    </style>
+
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/5cc6fb9f6b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <h1 style="text-align: center; font-size: 4.5rem; color: #fff">
+        TODO APP
+      </h1>
+    </header>
+    <!--Main-->
+    <main>
+      <div class="container">
+        <input type="text" placeholder="Enter Your Todos!" id="inputTodo" />
+        <ul id="todos"></ul>
+      </div>
+    </main>
+    <script src="./todo.js"></script>
+  </body>
+</html>
