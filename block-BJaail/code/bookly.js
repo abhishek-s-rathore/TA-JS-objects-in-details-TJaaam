@@ -46,6 +46,7 @@ class MyBooks {
 let library = new MyBooks();
 
 // Item
+
 class Book {
   constructor(name, author, isbn) {
     this.name = name;
@@ -59,6 +60,7 @@ class Book {
     // console.log(this);
     this.books[index].isRead = !this.books[index].isRead;
   }
+
   handleDelete(id) {
     this.books = this.books.filter((book) => book.id !== id);
     this.createUI();
