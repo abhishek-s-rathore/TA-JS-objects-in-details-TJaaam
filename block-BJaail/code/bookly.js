@@ -1,56 +1,49 @@
-let bookName = document.querySelector("#title");
-let bookAuthor = document.querySelector("#author");
-let bookISBN = document.querySelector("#isbn");
-let button = document.querySelector("button");
-let list = document.querySelector("#root");
-const form = document.querySelector(".form");
+let form = document.querySelector("form");
+let bookListRoot = document.querySelector("#bookList");
+
+const bookName = form.elements.title;
+const bookAuthor = form.elements.author;
+const bookISBN = form.elements.isbn;
 
 //  List
 class MyBooks {
-  constructor() {
-    this.bookList = [];
+  constructor(books = []) {
+    this.books = books;
   }
 
-  addBook(title, author, isbn) {
-    let obj = { title, author, isbn };
-    this.bookList.push(obj);
+  addBook(name, author, isbn) {
+    let book = new Book(name, author, isbn);
+    this.books.push(book);
     this.createUI();
   }
 
-  handleDelete(id) {
-    let index = this.bookList.findIndex((book) => book.id === id);
-    this.bookList.splice(0, 1);
-    this.createUI();
-  }
-
-  createUI() {
-    list.innerHTML = "";
-    this.bookList.forEach((book) => {
+  createUI(data = this.books) {
+    bookListRoot.innerHTML = "";
+    data.forEach((book, index) => {
+      // console.log(book);
       let li = document.createElement("li");
       let pName = document.createElement("p");
-      pName.innerText = book.title;
+      pName.innerText = book.name;
       let pAuthor = document.createElement("p");
       pAuthor.innerText = book.author;
       let pISBN = document.createElement("p");
       pISBN.innerText = book.isbn;
+      let input = document.createElement("input");
+      input.type = "checkbox";
+      input.checked = book.isRead;
+      input.addEventListener("click", book.handleCheck.bind(this, index));
+      pISBN.innerText = book.isbn;
       let span = document.createElement("span");
       span.innerText = "❌";
-      span.addEventListener("click", this.handleDelete);
-      li.append(pName, pAuthor, pISBN, span);
-      list.append(li);
+      span.addEventListener("click", book.handleDelete.bind(this, book.id));
+
+      li.append(pName, pAuthor, pISBN, input, span);
+      bookListRoot.append(li);
     });
   }
 }
 
-const myBooks = new MyBooks();
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const name = bookName.value;
-  const author = bookAuthor.value;
-  const isbn = bookISBN.value;
-  myBooks.addBook(name, author, isbn);
-});
+let library = new MyBooks();
 
 // Item
 class Book {
@@ -58,6 +51,31 @@ class Book {
     this.name = name;
     this.author = author;
     this.isbn = isbn;
+    this.isRead = false;
     this.id = `id-${Date.now()}`;
   }
+
+  handleCheck(index) {
+    // console.log(this);
+    this.books[index].isRead = !this.books[index].isRead;
+  }
+  handleDelete(id) {
+    this.books = this.books.filter((book) => book.id !== id);
+    this.createUI();
+    // console.log(this.books);
+  }
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  const name = bookName.value;
+  const author = bookAuthor.value;
+  const isbn = bookISBN.value;
+  // console.log(name, author, isbn);
+  library.addBook(name, author, isbn);
+  bookName.value = "";
+  bookAuthor.value = "";
+  bookISBN.value = "";
+}
+
+form.addEventListener("submit", handleSubmit);
